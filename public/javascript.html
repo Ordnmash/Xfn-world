@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock paper scissors</title>
+    <link rel="stylesheet" href="rockps.css">
+  </head>
+  <body>
+    <div class="top-bar">
+      <p>ROCK PAPER SCISSORS GAME</p>
+    </div>
+    <div id="available-amount">
+      <div class="deposit-input">
+        <input type="text" id="addMoney" placeholder="deposit amount..."> <button onclick="addAmount()"> add +</button>
+      </div>
+      <h2 id="myAvai"></h2>
+      <div class="lot-section">
+        <input type="text" id="lot-amount" placeholder="lot amount..."><button onclick="placeLot()">lot</button>
+      </div>
+      <h3 id="lot-cash">lot: R...</h3>
+    </div>
+    <h2 class="pick-move">Pick move</h2>
+    <div class="functionality">
+      <button onclick="rockMove()">Rock</button> <button onclick="paperMove()">Paper</button><button onclick="scissorsMove()">Scissors</button>
+    </div>
+    <div class="autoplay">
+      <button style="margin: 10px; padding: 5px;" id="autoplay-button" onclick="autoplay()">autoplay</button>
+    </div>
+      <p id="mymesseges" style="color: red;"></p>
+      <p id="playerpicked">...</p>
+      <p id="computermove">...</p>
+
+
+
+    <h4>Results:</h4>
+    <p id="results">...</p>
+    <h4>Score:</h4>
+    <p id="num-ties">...</p>
+    <p id="num-wins">...</p>
+    <p id="num-loses">...</p>
+    <div class="percentage">
+      <h5 id="progressPerc"></h5>
+    </div>
+    <div class="progress-bar">
+      <div class="bad"></div> <div class="good"></div> <div class="better"></div>
+    </div>
+    <h4>player Reaction:</h4>
+    <p id="myReaction">...</p>
+  </body>
+  <script src="rockps.js">
+  </script>
+</html>

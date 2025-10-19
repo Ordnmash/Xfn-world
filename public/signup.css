@@ -1,0 +1,192 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+html{
+  font-family: Poppins;
+  font-size: 12px;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url("imagefiles/xfnspacebackground0111511.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.auth-container{
+  width: 100%;
+  background-color: #c0c0c0;
+  display: flex;
+  flex-direction: row;
+  height: 350px;
+  position: relative;
+  box-shadow: rgb(230, 230, 230, 0.15) 0 0 30px;
+}
+.signup-login{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  transition: 1s ease-in;
+  width: 50%;
+  height: 100%;
+  color: #444;padding: 10px;
+}
+.signup-login.checked{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 50%;
+  transition: 1s ease-out;
+  width: 50%;
+  height: 100%;
+  color: #444;
+  padding: 10px;
+}
+.signup, .login{
+  display: none;
+}
+.signup.active, .login.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+h1{
+  font-size: 3em;
+  color: #0078d4;
+}
+.login-signup-bord{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0%;
+  height: 100%;
+  background-color: #000064;
+  padding: 10px;
+  padding-left: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  transition: 1s ease-in;
+  width: 50%;
+  color: #c0c0c0;
+  box-shadow: #000016 -10px 0 50px;
+}
+.login-signup-bord button{
+  padding: 6px 16px;
+  font-size: 1.2em;
+  border: 1.5px solid #ffff;
+  background-color: transparent;
+  color: #ffff;
+  border-radius: 8px;
+  font-weight: 550;
+  cursor: pointer;
+} .login-signup-bord button:hover{
+  color: #000064;
+  background-color: #ffff;
+}
+.login-signup-bord.checked{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50%;
+  height: 100%;
+  background-color: #000064;
+  padding: 10px;
+  padding-right: 30px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
+  transition: 1s ease-out;
+  width: 50%;
+  color: #c0c0c0;
+  box-shadow: #000016 10px 0 50px;
+}
+.login-bord, .signup-bord {
+  display: none;
+}
+.login-bord.active{
+  display: flex;
+  flex-direction: column;
+}
+.signup-bord.active{
+  display: flex;
+  flex-direction: column;
+}
+
+/*=======DETAILS STYLING===========*/
+.input-details{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 5%;
+}
+.input-details p{
+  font-weight: 500;
+  margin-top: 3px;
+}
+.input-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.input-box input{
+  background-color: #eee;
+  border: none;
+  height: 100%;
+  border-radius: 4px;
+  padding: 0 8px;
+  align-items: end;
+  outline: none;
+} .input-box input::placeholder{
+  color: #bbbbbb;
+}
+.complete-btn{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+.complete-btn button{
+  padding: 4px 16px;
+  border: 2px solid #000032;
+  background-color: #000032;
+  border-radius: 4px;
+  color: #c0c0c0;
+  font-weight: 700;
+  cursor: pointer;
+}
+.complete-btn button:hover{
+  background-color: #000016;
+  color: #444;
+}
+.errors-cont{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.forgot-pass{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.forgot-pass a{
+  text-decoration: none;
+  color: #000032;
+  font-weight: 600;
+}
+.errors-cont p{
+  color: red;
+}

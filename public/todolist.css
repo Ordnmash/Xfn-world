@@ -1,0 +1,125 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+body{
+  background-image: url("imagefiles/xfnspacebackground0111511.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 40px;
+}
+.todo-container{
+  background-color: rgb(230, 230, 230, 0.02);
+  backdrop-filter: blur(2px);
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 8px;
+}
+.todo-input{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  height: 25px;
+  width: 100%;
+}
+.todo-input button{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  color: #fff;
+  background-color: blue;
+  border: blue;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.todo-input input{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(230, 230, 230, 0.25);
+  color: rgb(230, 230, 230, 0.5);
+}
+.todo-input input::placeholder{
+  color: #bbb;
+}
+.errors{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.todo-output{
+  box-shadow: rgb(192, 192, 192, 0.25) 0 0 10px;
+  backdrop-filter: blur(2px);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.todo-output p{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 3px 8px;
+  font-weight: 700;
+  font-size: 1.2em;
+  border-bottom: 1px solid #444;
+}
+.todo-output button{
+  padding: 3px 8px;
+  background-color: red;
+  border: 2px solid red;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+.edit-button{
+  background-color: gold;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  color: #444;
+  cursor: pointer;
+}
+.edit-todo{
+  padding: 3px 8px;
+  border-bottom: 3px solid #ddd;
+  display: none;
+  gap: 5px;
+}
+.edit-todo input{
+  width: 100%;
+  outline: none;
+  padding: 0 5px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(230, 230, 230, 0.25);
+  color: rgb(230, 230, 230, 0.5);
+}
+.edit-todo button{
+  background-color: green;
+  border: 2px solid green;
+}

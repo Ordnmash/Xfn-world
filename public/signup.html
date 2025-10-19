@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup - login</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="signup-login">
+        <div class="signup active">
+          <h1>xfn world</h1>
+          <h4>signup</h4>
+          <div class="input-details">
+            <p>email*</p>
+            <div class="input-box">
+              <span class="material-icons">mail</span><input type="email" id="signup-email" placeholder="example@gmail.com">
+            </div>
+            <p>user name*</p>
+            <div class="input-box">
+              <span class="material-icons">person</span><input type="text" id="signup-username" placeholder="User Name">
+            </div>
+            <p>password*</p>
+            <div class="input-box">
+              <span class="material-icons">lock</span><input type="password" id="signup-password" placeholder="*****">
+            </div>
+            <p>confirm password*</p>
+            <div class="input-box">
+              <span class="material-icons">lock</span><input type="password" id="signup-confirm-password" placeholder="*****">
+            </div>
+            <div class="errors-cont">
+              <p id="error-message"></p>
+            </div>
+            <div class="complete-btn">
+              <button onclick="signupBtn()">sign up</button>
+            </div>
+          </div>
+        </div>
+        <div class="login">
+          <h1>xfn world</h1>
+          <h4>login</h4>
+          <div class="input-details">
+            <p>email*</p>
+            <div class="input-box">
+              <span class="material-icons">mail</span><input type="email" id="login-email" placeholder="example@gmail.com">
+            </div>
+            <p>password*</p>
+            <div class="input-box">
+              <span class="material-icons">lock</span><input type="password" id="login-password" placeholder="*****">
+            </div>
+            <div class="forgot-pass">
+              <a href="#">forgot password?</a>
+            </div>
+            <div class="errors-cont">
+              <p id="errorlog-message"></p>
+            </div>
+            <div class="complete-btn">
+              <button onclick="loginBtn()">log in</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="login-signup-bord">
+        <div class="login-bord active">
+          <h3>Hello fam, welocome to Xfn world!</h3>
+          <p>already have an account?</p>
+          <button onclick="switchToLogin()">login</button>
+        </div>
+        <div class="signup-bord">
+          <h3>Hello fam, welocome to Xfn world!</h3>
+          <p>don't have an account?</p>
+          <button onclick="switchToSignup()">signup</button>
+        </div>
+      </div>
+    </div>
+    <script  src="signup.js"></script>
+  </body>
+</html>

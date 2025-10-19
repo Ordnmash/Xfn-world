@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist</title>
+    <link rel="stylesheet" href="todolist.css">
+  </head>
+  <body>
+    <div class="todo-container">
+      <h3>todo list</h3>
+      <div class="todo-input">
+        <input type="text" id="todo-inputEl" placeholder="todo name...">
+        <button onclick="addTodo()">Add</button>
+      </div>
+      <div class="errors">
+        <p style="color: rgb(190, 0, 0);" id="error-message">...</p>
+      </div>
+      <div class="todo-output" id="todo-output"></div>
+    </div>
+    <script src="todolist.js"></script>
+  </body>
+</html>

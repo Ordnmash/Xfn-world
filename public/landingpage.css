@@ -1,0 +1,324 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 12px;
+  font-family: Poppins, arial;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #222;
+  background-color: #fff;
+  overflow: hidden;
+}
+.top-bar{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000064;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 0;
+  overflow: hidden;
+  border-bottom: #c0c0c0 3px solid;
+  color: #c0c0c0;
+}
+.top-bar h2{
+  display: flex;
+  align-items: center;
+}
+.top-bar img {
+  height: 50px;
+}
+.desktop-links{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding-top: 5px;
+  position: absolute;
+  right: 0;
+  transition: 1s ease;
+}
+.desktop-links .show-content{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000064;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px;
+}
+.desktop-links .show-content.active{
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  position: relative;
+}
+.desktop-links .show-content.active::after{
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.desktop-links .show-content:hover{
+  background-color: rgb(255, 255, 255, 0.15);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.desktop-search-box{
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.desktop-search-box span{
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  color: #c0c0c0;
+}
+.desktop-search-box input{
+  background-color: rgb(192, 192, 192, 0.3);
+  border: 1px solid #c0c0c0;
+  border-radius: 999px;
+  padding: 0 6px;
+  height: 100%;
+  outline: none;
+  color: white;
+}
+.search-box{
+  height: 25px;
+  display: none;
+  flex-direction: row;
+  position: relative;
+}
+.search-box span{
+  position: absolute;
+  right: 0;
+  margin-right: 5px;
+  color: #c0c0c0;
+}
+.search-box input{
+  background-color: rgb(192, 192, 192, 0.3);
+  border: 1px solid #c0c0c0;
+  border-radius: 999px;
+  padding: 0 6px;
+  height: 100%;
+  outline: none;
+  color: white;
+}
+.burger-menu span{
+  display: flex;
+  position: absolute;
+  right: -100%;
+  top: 25%;
+  margin-right: 5px;
+  transition: 1s ease-out;
+  cursor: pointer;
+}
+.search-box input::placeholder{
+  color: #bbb;
+}
+.hand-divice-menu{
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  font-size: 1.1em;
+  background-color: #000032;
+  width: 75%;
+  z-index: 100;
+  right: -100%;
+  transition: 1s ease-out;
+}
+.hand-divice-menu.active{
+  right: 0;
+  transition: 1s ease-in;
+}
+.close-menu{
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: pointer;
+  display: none;
+}
+.close-menu.active{
+  display: block;
+}
+.hand-divice-menu .show-content{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  padding: 6px;
+}
+.hand-divice-menu .show-content:hover{
+  background-color: #000064;
+  color: #fff;
+}
+@media (max-width: 600px){
+  .desktop-links{
+    right: -100%;
+    transition: 1s ease-in;
+    opacity: 0;
+    z-index: 0;
+  }
+  .burger-menu span{
+    right: 0;
+    top: 25%;
+    margin-right: 5px;
+    transition: 1s ease-out;
+    cursor: pointer;
+  }
+  .search-box{
+    display: flex;
+  }
+  .desktop-search-box{
+    display: none;
+  }
+}
+/*------content styling----------*/
+.dashboard-content, .office-content, .rooms-content, .markets-centre{
+  display: none;
+}
+.dashboard-content.active, .office-content.active, .rooms-content.active, .markets-centre.active{
+  display: flex;
+  flex-direction: column;
+}
+
+/*dashboard styling------------*/
+.account-summary{
+  position: absolute;
+  right: 0;
+  width:30%;
+  background-color: #c0c0c0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  padding: 10px;
+  box-shadow: rgb(255, 255, 255, 0.3) 0 0 20px;
+  z-index: 3;
+  transition: 0.75s ease-out;
+}
+.account-summary.active{
+  width: 80%;
+  transition: 0.75s ease-in;
+}
+.close-account-summary{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(1, 1, 1, 0.5);
+  z-index: 1;
+  display: none;
+}
+.close-account-summary.active{
+  display: block;
+}
+
+.short-summary, .full-summary{
+  display: none;
+}
+.short-summary.active, .full-summary.active{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #222;
+  position: relative;
+}
+/*-----profile card styling-------*/
+.profile-card{
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  background-color: rgb(255, 255, 255, 0.025);
+  border-radius: 12px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.my-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  width: 68%;
+}
+.my-profile img{
+  height: 100px;
+  width: 100px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: rgb(255, 255, 255, 0.25) 0 0 10px;
+}
+.my-network{
+  border-top: 3px solid #444;
+  padding-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+.my-network .rooms, .officies{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid #c0c0c0;
+  border-radius: 4px;
+  padding: 4px;
+}
+.my-network button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border: 2px solid #c0c0c0;
+  color: #c0c0c0;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: transparent;
+}
+.my-network button:hover{
+  background-color: #0078d4;
+  border-color: #0078d4;
+  color: #fff;
+}
+.all-plans{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+}
+.all-plans .free-plan, .primary, .secondary, .tertiary{
+  height: 100%;
+  min-width: 100px;
+  width: auto;
+  box-shadow: rgb(1, 1, 1, 0.25) 0 0 10px;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.all-plans .free-plan:hover, .primary:hover, .secondary:hover, .tertiary:hover{
+  box-shadow: rgb(0, 0, 64, 1) 0 0 10px;
+}

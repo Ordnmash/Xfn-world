@@ -1,0 +1,156 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  padding: 5px;
+}
+.top-bar{
+  width: 100%;
+  height: 40px;
+  position: sticky;
+  border-bottom: 2px solid grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  background-color: rgb(230, 230, 230);
+}
+#available-amount{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: end;
+  margin-top: 20px;
+  padding-right: 10px;
+}
+.deposit-input{
+  display: flex;
+  height: 25px;
+  gap: 5px;
+}
+.deposit-input input{
+  border:  1px solid #444;
+  border-radius: 4px;
+  padding: 0 4px;
+  outline: none;
+}
+.deposit-input button{
+  border: rgb(0, 165, 0) 1px solid;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25em;
+  font-weight: 600;
+  border-radius: 8px;
+  background-color: rgb(0, 165, 0, 0.2);
+}
+.deposit-input button:hover{
+  color: white;
+  background-color: rgb(0, 165, 0);
+}
+.pick-move{
+  margin-top: 20px;
+}
+.functionality{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.functionality button{
+  padding:  10px 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+  border: #444 2px solid;
+  border-radius: 8px;
+
+}
+p{
+  font-size: 1.2em;
+}
+h4 {
+  font-size: 1.25em;
+  margin-top: 10px;
+}
+.lot-section{
+  display: flex;
+  gap: 5px;
+  height: 25px;
+}
+.lot-section button{
+  height: 100%;
+  padding: 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: rgb(255, 255, 0, 0.2);
+  border:  1px solid rgba(255, 255, 0);
+  border-radius: 8px;
+}
+.lot-section input{
+  border:  1px solid #444;
+  border-radius: 4px;
+  padding: 0 4px;
+  outline: none;
+}
+.percentage{
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.progress-bar{
+  display: flex;
+  width: 180px;
+  height: 10px;
+  border: 1px solid grey;
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.bad, .good, .better{
+  position: absolute;
+  display: flex;
+  left:  -100%;
+  transition: 1ms ease-out;
+}
+.bad.active {
+  background-color: red;
+  height: 100%;
+  width: 33.333%;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  position: absolute;
+  left: 0;
+  transition: 1s ease-in;
+}
+.good.active{
+  background-color: green;
+  height: 100%;
+  width: 66.6666%;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  position: absolute;
+  left: 0;
+  transition: 1.2s ease-in;
+}
+.better.active{
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  position: absolute;
+  left: 0;
+  transition: 1.5s ease-in;
+}
