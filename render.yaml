@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: xfn-world
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
