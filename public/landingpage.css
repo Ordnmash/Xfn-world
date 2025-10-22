@@ -11,9 +11,10 @@ body{
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
   color: #222;
   background-color: #fff;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .top-bar{
   width: 100%;

@@ -6,11 +6,10 @@ const csv = require("csv-parser");
 
 const router = express.Router();
 
-// Parse HistData date/time format: "YYYY.MM.DD,HH:MM"
+// Convert "YYYY.MM.DD" + "HH:MM" → UNIX time (seconds)
 function parseHistDataDate(dateStr, timeStr) {
   const [year, month, day] = dateStr.split(".").map(Number);
   const [hours, minutes] = timeStr.split(":").map(Number);
-
   return Math.floor(Date.UTC(year, month - 1, day, hours, minutes) / 1000);
 }
 
@@ -19,47 +18,39 @@ router.get("/:symbol", async (req, res) => {
     const symbol = req.params.symbol.toUpperCase();
     const folderPath = path.join(__dirname, `../data/${symbol}`);
 
-    // ✅ Get all CSV files inside the symbol folder (sorted by year)
     const files = fs.readdirSync(folderPath)
       .filter(f => f.endsWith(".csv"))
-      .sort(); // e.g. 2020.csv, 2021.csv, ...
+      .sort();
 
     if (files.length === 0) {
-      return res.status(404).send("No CSV files found for symbol " + symbol);
+      return res.status(404).send(`No CSV found for ${symbol}`);
     }
 
     const results = [];
 
-    // Helper: read one file and push candles into results[]
-    const readFile = (filePath) => {
-      return new Promise((resolve, reject) => {
-        fs.createReadStream(filePath)
-          .pipe(csv({ headers: ["Date", "Time", "Open", "High", "Low", "Close", "Volume"] }))
-          .on("data", (row) => {
-            results.push({
-              time: parseHistDataDate(row["Date"], row["Time"]),
-              open: parseFloat(row["Open"]),
-              high: parseFloat(row["High"]),
-              low: parseFloat(row["Low"]),
-              close: parseFloat(row["Close"]),
-              volume: parseInt(row["Volume"], 10),
-            });
-          })
-          .on("end", resolve)
-          .on("error", reject);
-      });
-    };
+    // Helper: read file line-by-line
+    const readFile = (filePath) => new Promise((resolve, reject) => {
+      fs.createReadStream(filePath)
+        .pipe(csv({ headers: ["Date", "Time", "Open", "High", "Low", "Close", "Volume"] }))
+        .on("data", row => {
+          results.push({
+            time: parseHistDataDate(row["Date"], row["Time"]),
+            open: parseFloat(row["Open"]),
+            high: parseFloat(row["High"]),
+            low: parseFloat(row["Low"]),
+            close: parseFloat(row["Close"]),
+          });
+        })
+        .on("end", resolve)
+        .on("error", reject);
+    });
 
-    // ✅ Read all files sequentially
+    // Read all yearly files sequentially
     for (const file of files) {
-      const filePath = path.join(folderPath, file);
-      await readFile(filePath);
+      await readFile(path.join(folderPath, file));
     }
 
-    // ✅ Sort candles by time just in case
     results.sort((a, b) => a.time - b.time);
-
-    console.log("Loaded candles:", results.length);
     res.json(results);
 
   } catch (err) {

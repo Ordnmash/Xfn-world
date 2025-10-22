@@ -21,6 +21,8 @@ body{
   width: 100%;
   background-color: #fff;
   color: #222;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .top-bar{
   display: flex;
@@ -29,8 +31,7 @@ body{
   width: 100%;
   justify-content: space-between;
   min-height: 45px;
-  backdrop-filter: blur(2px);
-  box-shadow: #c0c0c0 0 0 20px;
+  backdrop-filter: blur(0.75px);
   padding: 2px;
   position: fixed;
   top: 0;
@@ -419,3 +420,11 @@ body{
   background-color: rgba(199, 199, 199, 0.5);
   display: none;
 }
+button {
+  padding: 6px 14px; border: none; border-radius: 6px;
+  background: #0078d4; color: white; cursor: pointer;
+}
+button:hover { 
+  background: #005fa3; 
+}
+#chart { height: 400px; margin: 0 auto; width: 95%; }

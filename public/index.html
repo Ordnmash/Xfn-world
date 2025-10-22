@@ -127,6 +127,20 @@
       <h4>what are we looking for in the long-term?</h4>
       <p>to provide a some simple tools for traders to use for backtesting and scaling their technical strategies</p>
     </div>
+    <h2 style="margin-left:10px;">XFN Price Chart</h2>
+    <div class="symbol-buttons">
+      <button data-symbol="GBPUSD">GBPUSD</button>
+      <button data-symbol="EURUSD">EURUSD</button>
+    </div>
+    <div class="timeframe-buttons">
+      <button data-timeframe="1">1m</button>
+      <button data-timeframe="5">5m</button>
+      <button data-timeframe="15">15m</button>
+      <button data-timeframe="60">1h</button>
+      <button data-timeframe="240">4h</button>
+      <button data-timeframe="1440">1d</button>
+    </div>
+    <div id="chart"></div>
     <div class="accordion-content">
       <div class="social-media">
         <a href="">facebook</a>
@@ -136,10 +150,13 @@
         <a href="">linkedin</a>
       </div>
       <div class="acc-buttons">
-        <label onclick="showacc()" id="acc-head">our goal</label>
+        <label onclick="showacc1()" id="acc-head">our goal</label>
         <p id="acc-content1">we're focusing on providing useful trading tools</p>
+        <label onclick="showacc2()" id="acc-head">user benefits</label>
+        <p id="acc-content2">we're focusing on providing useful trading tools</p>
       </div>
     </div>
+    <script src="https://unpkg.com/lightweight-charts@4.0.1/dist/lightweight-charts.standalone.production.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

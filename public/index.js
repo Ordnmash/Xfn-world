@@ -21,13 +21,26 @@ function closeSide(){
 
 //-----accordion-functionality--------
 const accContent1 = document.getElementById("acc-content1");
-const accHeader = document.getElementById("acc-head");
+const accContent2 = document.getElementById("acc-content2");
 
-function showacc(){
-  if (accContent1.style.display = 'none'){
-    accContent1.style.display = 'flex'
-  } else if (accContent1.style.display = 'flex'){
-    accContent1.style.display = 'none'
+let status = 'none';
+
+function showacc1(){
+  if (status == 'none'){
+    status = 'flex';
+    accContent1.style.display = status;
+  } else{
+    status = 'none';
+    accContent1.style.display = status;
+  }
+}
+function showacc2(){
+  if (status == 'none'){
+    status = 'flex';
+    accContent2.style.display = status;
+  } else{
+    status = 'none';
+    accContent2.style.display = status;
   }
 }
 
@@ -62,3 +75,83 @@ setInterval(() => {
     adv3 = false;
   }
 }, 2500);
+
+//chart
+let chart, candleSeries, originalData = [];
+
+async function loadChart(symbol = "GBPUSD") {
+  try {
+    // Clear previous chart
+    const container = document.getElementById("chart");
+    container.innerHTML = "";
+    chart = LightweightCharts.createChart(container, {
+      width: container.offsetWidth,
+      height: 600,
+      layout: { background: { color: "#fff" }, textColor: "#000" },
+      grid: { vertLines: { color: "#eee" }, horzLines: { color: "#eee" } },
+      crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+      rightPriceScale: { borderColor: '#ccc' },
+      timeScale: { borderColor: '#ccc', timeVisible: true },
+    });
+
+    candleSeries = chart.addCandlestickSeries({
+      upColor: "#26a69a",
+      downColor: "#ef5350",
+      borderUpColor: "#26a69a",
+      borderDownColor: "#ef5350",
+      wickUpColor: "#26a69a",
+      wickDownColor: "#ef5350",
+    });
+
+    // Fetch symbol candles
+    const res = await fetch(`/candles/${symbol}`);
+    const data = await res.json();
+    originalData = data;
+
+    candleSeries.setData(data);
+
+    // Responsive
+    window.onresize = () => chart.applyOptions({ width: container.offsetWidth });
+
+  } catch (err) {
+    console.error("Error loading chart:", err);
+  }
+}
+
+// Timeframe aggregation
+function setTimeframe(minutes) {
+  if (!candleSeries || !originalData.length) return;
+
+  if (minutes === 1) {
+    candleSeries.setData(originalData);
+    return;
+  }
+
+  const aggregated = [];
+  let bucket = null;
+
+  originalData.forEach(c => {
+    const slot = Math.floor(c.time / (minutes * 60)) * (minutes * 60);
+    if (!bucket || bucket.time !== slot) {
+      if (bucket) aggregated.push(bucket);
+      bucket = { time: slot, open: c.open, high: c.high, low: c.low, close: c.close };
+    } else {
+      bucket.high = Math.max(bucket.high, c.high);
+      bucket.low = Math.min(bucket.low, c.low);
+      bucket.close = c.close;
+    }
+  });
+  if (bucket) aggregated.push(bucket);
+  candleSeries.setData(aggregated);
+}
+
+// Bind buttons
+document.querySelectorAll(".symbol-buttons button").forEach(btn => {
+  btn.onclick = () => loadChart(btn.dataset.symbol);
+});
+document.querySelectorAll(".timeframe-buttons button").forEach(btn => {
+  btn.onclick = () => setTimeframe(parseInt(btn.dataset.timeframe));
+});
+
+// Load default
+loadChart("GBPUSD");

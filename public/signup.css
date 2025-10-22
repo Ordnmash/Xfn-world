@@ -19,6 +19,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 .auth-container{
   width: 100%;
@@ -28,6 +29,7 @@ body{
   height: 350px;
   position: relative;
   box-shadow: rgb(230, 230, 230, 0.15) 0 0 30px;
+  overflow: hidden;
 }
 .signup-login{
   display: flex;
@@ -122,7 +124,102 @@ h1{
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 530px){
+  .signup-login{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    transition: 1s ease-in;
+    width: 70%;
+    height: 100%;
+    color: #444;
+    padding: 10px;
+  }
+  .signup-login.checked{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 30%;
+    transition: 1s ease-out;
+    width: 70%;
+    height: 100%;
+    color: #444;
+    padding: 10px;
+  }
+  .signup, .login{
+    display: none;
+  }
+  .signup.active, .login.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
 
+  h1{
+    font-size: 3em;
+    color: #0078d4;
+  }
+  .login-signup-bord{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: #000064;
+    padding: 10px;
+    padding-left: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: 1s ease-in;
+    width: 30%;
+    color: #c0c0c0;
+    box-shadow: #000016 -10px 0 50px;
+  }
+  .login-signup-bord button{
+    padding: 6px 16px;
+    font-size: 1.2em;
+    border: 1.5px solid #ffff;
+    background-color: transparent;
+    color: #ffff;
+    border-radius: 8px;
+    font-weight: 550;
+    cursor: pointer;
+  } .login-signup-bord button:hover{
+    color: #000064;
+    background-color: #ffff;
+  }
+  .login-signup-bord.checked{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 70%;
+    height: 100%;
+    background-color: #000064;
+    padding: 10px;
+    padding-right: 30px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    transition: 1s ease-out;
+    width: 30%;
+    color: #c0c0c0;
+    box-shadow: #000016 10px 0 50px;
+  }
+  .login-bord, .signup-bord {
+    display: none;
+  }
+  .login-bord.active{
+    display: flex;
+    flex-direction: column;
+  }
+  .signup-bord.active{
+    display: flex;
+    flex-direction: column;
+  }
+}
 /*=======DETAILS STYLING===========*/
 .input-details{
   display: flex;
